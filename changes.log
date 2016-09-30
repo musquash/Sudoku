@@ -1,0 +1,18 @@
+Version 0.9.1
+	- Die Methode Grid.reset (Zeile 140) wurde so abgeändert, das jedes Feld 
+	  eine eigeneständige Instanz ist Damit einher geht die Änderung, das in der 
+	  Methode Sudoku.set (Zeile 222) die setter-Methode (Grid.set) zum Setzen 
+	  bzw. ändern der Werte eingesezt wird. Vorher wurden hier neuen Insanzen 
+	  angelegt.
+	
+	- Der Reguläre Ausdruck, zum setzen von Notizen, (Zeile 182) wurde geändert, 
+	  so dass es nicht mehr zu einem Konflikt mit dem Ausdruck für das anzeigen 
+	  der Nozien kommt.
+	  
+	- Der Reguläre Ausdruck, zum setzen von Notizen, (Zeile 184) wurde geändert, 
+	  so dass es nicht mehr zu einem Syntax Fehler kommt.
+
+Version 0.9.2
+	- In Zeile 98-90 wurd ein Integer-Cast hinzugefügt
+	
+	- Die Datei level/sudoku.lev wurde an die Änderungen angepasst.

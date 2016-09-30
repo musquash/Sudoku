@@ -1,0 +1,81 @@
+from sudoku import Sudoku, Grid, CommandLineInterface
+
+
+__author__ = "4280211: Julia Holzmann, 4109208: Philipp Lang"
+
+
+
+class Item(Sudoku.Item):
+    def __init__(self, value:int, hint:str, notes:list, solid:bool = False):
+        self.value = value
+        self.notes = []
+        self.hint = ""
+
+    def set(self, value:int, solid:bool, hint:str):
+        self._value = int(value)
+        self.solid = solid
+        self.hint = hint
+
+    def get(self):
+        return(self._value)
+    
+    def get_solid(self):
+        return(self._solid)
+
+    def get_hint(self):
+        return(self._hint)
+
+    def get_notes(self):
+        self.notes = []
+        self.notes.append(hint)
+        return(self.notes)
+
+
+
+class solid_Sudoku(Item, Sudoku):
+    def __init__(self, T:Grid.Item):
+        Grid.__init__(self, T, 9, 3)
+        CommandLineInterface.__init__(self)
+
+    def fix_field(self, row:str, col:str, value:int):
+        row, col = self._mapper(row, col)
+        self[row][col].set(value, True)
+        if self.is_valid_row(row) or self.is_valid_col(col) or self.is_valid_submarix(row, col):            
+            return "Conflicted value {0}!\n".format(value)
+
+    def set(self, row:str, col:str, value:int):
+        row, col = self._mapper(row, col)
+        solid = self[row][col].get_solid()
+        if solid == False:
+            self[row][col].set(value)
+            if self.is_valid_row(row) or self.is_valid_col(col) or self.is_valid_submarix(row, col):            
+                return "Conflicted value {0}!\n".format(value)
+        else:
+            print("Kann nicht ueberschrieben werden.")
+
+    def set_note(self, row: str, col:str, hint:str):
+        self.notes = []
+        row, col = self._mapper(row, col)
+        self.notes.append(set(hint))
+        if self.is_valid_row(row) or self.is_valid_col(col) or self.is_valid_submarix(row, col):
+            return "Conflited value {0}!\n".format(value)
+        return None
+
+    def get_note(self, row: str, col:str) -> Item:
+        row, col = self._mapper(row, col)
+        value, hint = self[row][col]
+        return(hint)            
+
+    def generate_notes(self, row:str, col:str):
+        for item in row:
+            for item in col:
+                if self[row][col] != self.get_empty():
+                    set_note(self, row, col, hint)
+                        
+
+##class Items(Item):
+##    pass
+
+solid_Sudoku(Item).mainloop()
+
+

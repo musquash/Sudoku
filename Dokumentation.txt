@@ -1,0 +1,75 @@
+Klasse CommandLineInterface.Command:
+Legt die Struktur der Befehle fest. Zu dieser Struktur gehört die Schreib-
+weise des Bentuzers und die Interpretation des Systems aus dieser 
+(Interpretation).
+
+
+Methode CommandLineInterface.mainloop:
+Beschreibt die "Hauptschleife" zum mehrfachen anfragen von Befehlen ohne
+das Programm mehrmals zu starten. 
+Input: self
+output: str und je nach Eingabe True oder False
+
+
+
+Methode CommandLineInterface.quit:
+Quit beendet das Programm, bzw. die Schleife CommandLineInterface.mainloop(),
+mit den Worten "Bye Bye"
+Input: self
+Output: False
+
+
+
+Klasse Grid.Item:
+Verwaltung der bereits im Feld eingetragenen Werte.
+
+
+Methode __getitem__:
+Liefert zu einer Indexposition den Wert. 
+Input: self, index:int
+Output: int
+
+
+Methode get_row:
+Gibt die Werte einer ganzen Reihe aus.
+Input: self, index:int
+Output: list
+
+
+Methode get_col:
+Gibt die Werte einer ganzen Spalte aus.
+Input: self, index:int
+Output: list
+
+
+Methode get_submarix:
+Gibt die Werte einer Submatrix aus (kleines 3*3 Feld).
+Input: self, row:int, col:int
+Output: list
+
+
+Methode sudoku_is_valid:
+Überprüft ob der einzutragende Wert den Sudokuregeln entspricht.
+Wenn der Eintrag leer ist oder häufiger vorkommt, dann wird ein True 
+ausgegeben!
+
+
+Veerbung der Klasse Sudoku:
+Die Klasse Sudoku erbt von den Klassen Grid und CommandLineInterface.
+Die Klasse Sudoku wird mittels dieser Klassen initialisiert.
+
+
+Methode Sudoku_mapper():
+Diese Funktion übersetzt die eingegebenen Koordinaten von einem eingetragenen
+Wert in die im System gespeicherten Indizes.
+Input: self, row:str col:str
+Output: tuple
+
+
+Methode Sudoku.save():
+get_fullname liefert den vom Benutzer eingegeben Wert (oder Standardwerte
+falls vom Benutzer kein Name eingeben wurde) und speichert das in ein File
+ab. Sie macht das in einer Exception. Sollte es nicht möglich sein, das File
+abzuspeichern wird eine Fehlernachricht ausgegeben.
+Input: self, filename:str=""
+Output: ../level/"filename".lev

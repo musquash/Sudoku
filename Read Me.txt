@@ -1,0 +1,4 @@
+Zum Ausführen des Sudokus mit den erweiterten Funktionen bitte die Datei Sudoku(1).rar entpacken 
+und new_sudoku.py starten.
+
+Viel Spaß beim Spielen.
